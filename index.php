@@ -12,7 +12,7 @@ if (empty($_GET)){
         <strong>Info!</strong> No se estan recibiendo parametros
     </div>
     <?php
-}else if(checkParamsGet() && !isset($_GET['action'])){
+}else if(checkParamsGet() && isset($_GET['action']) && !isset($_GET['rp_num'])){
     showPayments(true);
 }else if(checkParamsGet() && isset($_GET['action']) && isset($_GET['rp_num'])){
     showPayments();

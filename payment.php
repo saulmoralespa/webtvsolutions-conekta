@@ -17,8 +17,7 @@ require_once ('conekta-php/lib/Conekta.php');
 if ($_POST['payment'] == 'cash'){
     $id_order = $_POST['id_order'];
     $currency_code = $_POST['currency_code'];
-    $amount = str_replace(".", "", $_POST['amount']);
-    $amount = (int)$amount;
+    $amount = Amount($_POST['amount']);
     $order_number = $_POST['order_number'];
     $name_cash = $_POST['name_cash'];
     $email_cash = $_POST['email_cash'];
@@ -57,9 +56,10 @@ if ($_POST['payment'] == 'cash'){
 }else{
     $id_order = $_POST['id_order'];
     $currency_code = $_POST['currency_code'];
-    $amount = str_replace(".", "", $_POST['amount']);
-    $amount = (int)$amount;
+    $amount = Amount($_POST['amount']);
     $order_number = $_POST['order_number'];
+
+
 
 
     try {
@@ -90,8 +90,7 @@ if ($_POST['payment'] == 'cash'){
 
         $recurring_payments = subscriptionRecurrent();
 
-        $amount_subscripcion = str_replace(".", "", $recurring_payments[0]['amount']);
-        $amount_subscripcion = (int)$amount_subscripcion;
+        $amount_subscripcion = Amount($recurring_payments[0]['amount']);
 
         try {
             $plan = \Conekta\Plan::find($recurring_payments[0]['sku']);
@@ -123,7 +122,7 @@ if ($_POST['payment'] == 'cash'){
     }
 
 
-    if(isset($customer->id) && isset($_POST['payment']) || ($amount > 0 && isset($amount_subscripcion))){
+    if(isset($customer->id) && !isset($_POST['payment']) || ($amount > 0 && isset($amount_subscripcion))){
         $order = array(
             "line_items" => array(
                 array(
@@ -287,4 +286,16 @@ function trialDays($date){
     $diff = date_diff($date1,$date2);
 
     return $diff->format("%a");
+}
+
+function Amount($amount){
+
+
+    if (strpos($amount, '.') !== false) {
+        $expl = explode('.', $amount);
+        $amount = $expl[0];
+    }
+
+    $amount .= '00';
+    return (int)$amount;
 }

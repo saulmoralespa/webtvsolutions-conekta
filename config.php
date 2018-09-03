@@ -1,5 +1,4 @@
 <?php
-
 //enviroment conekta
 //change a false para production
 $sandbox = true;
@@ -10,7 +9,6 @@ $apiKeyPrivateSandbox = 'sfdgdy56udgfgnhsdg';
 $apiKeyPublic = 'fsdgsdgdhgdfgdhklcabg';
 $apiKeyPrivate = 'sfdgdy56udgfgnhsdg';
 
-
 if ($sandbox){
     $keyPrivate = $apiKeyPrivateSandbox;
     $keyPublic = $apiKeyPublicSandbox;
@@ -18,8 +16,6 @@ if ($sandbox){
     $keyPrivate = $apiKeyPrivate;
     $keyPublic = $apiKeyPublic;
 }
-
-
 
 // this key must match the key entered in the external payment processor configuration of the Store extension (Store > Configuration). Keep it SAFE!.
 $key_signature = "w564yge$%&";
