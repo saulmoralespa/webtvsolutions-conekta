@@ -25,7 +25,7 @@ Integración del Conekta como medio de pago externo para [webtvsolutions](https:
 
 ### ¿ Países en los cuales esta disponible su uso ? ###
 
-Actualmente solo para México, de donde es el medio de pago
+Actualmente solo para México
 
 ### ¿ Como pruebo su funcionamiento ? ###
 
@@ -33,6 +33,7 @@ Use credenciales de prueba dados por conekta, edite el archivo config.php de la 
 
 ### ¿ Qué más debo tener en cuenta, que no me hayas dicho ? ####
 
+* Debe instalar la integración en otro dominio diferente de la WebTV
 * Donde instale la integración use ssl
-* La clave firma que se estable en la configuración de la tienda debe coincidir con la del archivo config.php
+* La clave firma que se establece en la configuración de la tienda debe coincidir con la del archivo config.php
 * La url de la tienda puede variar, puede siempre editar en el archivo config.php 
